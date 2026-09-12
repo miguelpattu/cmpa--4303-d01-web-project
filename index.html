@@ -9,6 +9,31 @@
 <style>
 html,body {font-family:"Verdana",sans-serif}
 h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
+
+/* Container to limit the maximum width on large screens */
+    .video-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 15px;
+    }
+
+    /* Maintains standard 16:9 widescreen aspect ratio */
+    .video-wrapper {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Makes the iframe fill the container */
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
 </style>
 
 <body>
@@ -60,7 +85,17 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
   
 <p><b>Videos about German Shepards</b><p>
 
-<a href= "https://www.youtube.com/watch?v=5Or4gRVQ304">Pros and Cons of Owning a German Shepherd</a>
+<div class="video-container">
+    <div class="video-wrapper">
+      <!-- Replace the VIDEO_ID with your YouTube video ID -->
+      <iframe 
+        src="ttps://www.youtube.com/watch?v=5Or4gRVQ304" 
+        title="Pros and Cons of Owning a German Shepherd" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
 
 <p><b>Articles about German Shepards</b><p>
 
