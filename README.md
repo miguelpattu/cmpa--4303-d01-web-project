@@ -1,37 +1,35 @@
-URL: https://miguelpattu.github.io/cmpa--4303-d01-web-project/Links to an external site.
+# **German Shepherd Website**
 
-Github: https://github.com/miguelpattu/cmpa--4303-d01-web-projectLinks to an external site.
+This website is all about German Shepherds. The intent of the website is to provide information on various topics about owning and caring for a German Shepherd. 
 
-What does your project look like right now?
+The website should be simple to navigate and be a "one stop shop" to provide resources from not only the webiste itself but from other links that provided information 
 
-My project currently is a basic website. I decided to make a website about German Shepherds. 
+as professionals or subject matter experts.
 
-I have one and thought it would be interesting to make a website all about German Shepherds, from their history, to different types, care, video, 
+## *Purpose*
 
-and make a community board where German Shepherd owners (fur moms and dads) can share their experiences owning a German Shepard, and provide advice. 
+I adopted a German Shepherd and during my time doing research before adoption, I had to navigate through several websites, videos and social media accounts to find all 
 
-I was able to create an intro, a carousel with a few stock photos and links to a video and an article. I still have some brainstorming to do make the 
+the information I was looking for. There was no single location to find all the information that was needed for research and knowledge.
 
-website look better and make it more interactive. 
+The website is designed people who own or are thinking about owning German Shepherds. 
 
-What tools are you using, and how are they working out? 
+The need it serves is to be one location to find proper resources on caring, feeding and maintaining a German Shepherd. 
 
-The current tools I am using is GitHub, Visual Studio Code, the W3 Schools HTML skeleton https://www.w3schools.com/w3css/w3css_web_html.aspLinks to an external site.
+## *Tools and Technology*
 
-The html skeleton has been extremely helpful because I can work the html codes to see if they work by doing a test run before committing on GitHub. I also used 
+- **GitHub** - for editing code, allowing others to view, have the ability to edit and make changes, publish the webiste and make it livey
 
-Gemini to assist with locating errors, like missing instructions or commands. 
 
-What's been the hardest part so far? 
+- **Visual Studio Code** to initially create and edit new files and run fuctions like debugging using Python
 
-It has been a technical challenge, but i was able to overcome one of my biggest hurdles and that was adding a style.css file. I completely overlooked it and 
+- **W3 Schools HTML skeleton** [W3C Schools](https://www.w3schools.com/w3css/w3css_web_html.asp) The html skeleton has been extremely helpful because I can work the html codes 
 
-honestly it took Gemini assist to figure it out. The design decision has been difficult, I don't have much of an imagination for designing websites, so I've
+to see if they work by doing a test run before committing on GitHub. I also used AI
 
-had to do research to see what is a good and "cool" design. So far I've built a basic website, but I hope to start putting it together this upcoming week and have 
+- **AI Gemini** to assist with improving the syntax order and locating errors, like missing instructions or commands. 
 
-it be interactive and have a cool, flowing design. 
+## Live Project
 
-What are you excited about continuing to build?
+[German Shepherd Website](https://miguelpattu.github.io/cmpa--4303-d01-web-project)
 
-I definitely want to work on the page aesthetic, by refining the background color, adding more features and changing the over design. 
