@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <style>
+  
 html,body {font-family:"Verdana",sans-serif}
 h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
 
@@ -34,17 +35,134 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
       border: 0;
       display: block;
     }
+
+  html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Header styling */
+    .site-header {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      z-index: 1000;
+    }
+
+    .brand-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #111827;
+      text-decoration: none;
+    }
+
+    .brand-title:hover {
+      color: #2563eb;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.75rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #4b5563;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+      background-color: #f3f4f6;
+    }
+
+    /* Section layout and spacing */
+    section {
+      padding: 3rem 2.5rem;
+      scroll-margin-top: 80px; /* Keeps the sticky header from blocking content */
+    }
+
+    #about { background-color: #f9fafb; }
+    #goals { background-color: #ffffff; }
+    #hobbies { background-color: #f3f4f6; }
+    #contact { background-color: #ffffff; }
+
+    /* Box model demo */
+    .box-model-demo {
+      margin: 2rem 2.5rem;
+      padding: 20px;
+      border: 2px solid #2563eb;
+      background-color: #e0e7ff;
+      border-radius: 8px;
+    }
+
+    /* Footer styling */
+    footer {
+      background-color: #111827;
+      color: #9ca3af;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. The Header -->
+  <header class="site-header">
+    <a href="#" class="brand-title">Miguel Padilla</a>
+    <nav aria-label="Main Navigation">
+      <ul class="nav-links">
+        <li><a href="#About">About</a></li>
+        <li><a href="#Types of GSDs">Types of GSDs</a></li>
+        <li><a href="#Videos">Videos</a></li>
+        <li><a href="#Articles">Articles</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 </style>
 
 <body>
 
 <img src="https://www.dailypaws.com/thmb/HUts4sQNvAVBIpljPep1TGJG4uQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/standing-german-shepherd-151533956-2000-f7799366e61c4a0a8fca2f72671e81f7.jpg" alt="LA" style="width:100%">
 
-<h1 style="text-align: center;">All things German Shepherd</h1>
+<main>
+  <section id="About"> 
+  <h1 style="text-align: center;">All things German Shepherd</h1>
 <p>Hello! This website is for German Shepherd lovers, to provide a one stop shop for things German Shepherds.</p>
 <p>From beginners to experienced German Shepherd owners, this webiste is desgined to resource all information</p>
+  </section>
 
-<p><b>Different Types of German Shepherds</b></p>
+  <section id="
+  <h2><b>Different Types of German Shepherds</b></h2>
   <div class="carousel-container">
   <div class="carousel-track">
     <div class="slide active">
@@ -82,8 +200,10 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
     <span class="dot" data-index="4"></span>
   </div>
 </div>
-  
-<p class="text-center"><b>Videos about German Shepards</b><p>
+
+    <section id="Videos">
+<h3></h3> class="text-center"><b>Videos about German Shepards</b></h3>
+  </section>
 
 <div class="video-container">
   <div class="video-wrapper">
@@ -96,7 +216,8 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
   </div>
 </div>
 
-<p><b>Articles about German Shepards</b><p>
+    <section id="articles">
+<h4><b>Articles about German Shepards</b></h4>
 
 <a href= "https://www.akc.org/expert-advice/health/tips-for-grooming-german-shepherd/">Tips for Grooming a German Shepherd</a>
 
@@ -152,6 +273,20 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
 
     startAutoplay();
   </script>
+
+      <section id="contact">
+      <h2>Contact Me</h2>
+      <p>Feel free to reach out:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:miguelpattu.edu">miguelpa@ttu.edu</a></li>
+      </ul>
+    </section>
+  </main>
+
+    <footer>
+    <p>&copy; 2026 Miguel Padilla and Texas Tech University. All rights reserved.</p>
+    <p><a href="#">Back to top &uarr;</a></p>
+  </footer>  
 
 </body>
 </html>
