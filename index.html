@@ -1,53 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-<title>German Shepherd Website</title>
-  <!-- External CSS Link -->
+<head>
+  <meta charset="UTF-8">
+  <title>German Shepherd Website</title>
   <link rel="stylesheet" href="style.css">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-  
-html,body {font-family:"Verdana",sans-serif}
-h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
-
-/* Container to limit the maximum width on large screens */
-    .video-container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 15px;
-    }
-
-    /* Maintains standard 16:9 widescreen aspect ratio */
-    .video-wrapper {
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      border-radius: 8px;
-      overflow: hidden;
-      background: #000;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    }
-
-    /* Makes the iframe fill the container */
-    .video-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-  html {
+  <style>
+    html {
       scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
-      font-family: "Times New Roman", Times, serif;
+      font-family: "Verdana", sans-serif;
       line-height: 1.6;
       color: #333;
     }
 
-    /* Header styling */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    /* =========================================
+       1. NAVIGATION HEADER
+       ========================================= */
     .site-header {
       position: sticky;
       top: 0;
@@ -94,37 +71,129 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
       background-color: #f3f4f6;
     }
 
-    /* Section layout and spacing */
-    section {
-      padding: 3rem 2.5rem;
-      scroll-margin-top: 80px; /* Keeps the sticky header from blocking content */
+    /* =========================================
+       2. HERO OVERLAY SECTION
+       ========================================= */
+    .hero-overlay {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      min-height: 480px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
-    #about { background-color: #f9fafb; }
-    #goals { background-color: #ffffff; }
-    #hobbies { background-color: #f3f4f6; }
-    #contact { background-color: #ffffff; }
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 1;
+    }
 
-    /* Box model demo */
-    .box-model-demo {
-      margin: 2rem 2.5rem;
-      padding: 20px;
-      border: 2px solid #2563eb;
-      background-color: #e0e7ff;
+    .hero-overlay-shade {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5); /* Darkens video for text readability */
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      color: #ffffff;
+      max-width: 750px;
+      padding: 0 1.5rem;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin: 0 0 0.75rem 0;
+      color: #ffffff;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin: 0 0 1.75rem 0;
+      color: #f3f4f6;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background-color: #ffa700;
+      color: #1f2937;
+      padding: 0.85rem 2rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
       border-radius: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     }
 
-    /* Footer styling */
+    .cta-btn:hover {
+      background-color: #e09400;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* =========================================
+       3. SECTIONS & GENERAL STYLING
+       ========================================= */
+    section {
+      padding: 3.5rem 2.5rem;
+      scroll-margin-top: 80px;
+    }
+
+    #About { background-color: #f9fafb; }
+    #Types-of-GSDs { background-color: #ffffff; }
+    #Videos { background-color: #f9fafb; }
+    #articles { background-color: #ffffff; }
+    #contact { background-color: #f9fafb; }
+
+    .video-container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    .video-wrapper {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
     footer {
       background-color: #ffa700;
-      color: #9ca3af;
+      color: #1f2937;
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.95rem;
+      font-weight: 500;
     }
 
     footer a {
-      color: #60a5fa;
+      color: #1e3a8a;
       text-decoration: none;
     }
 
@@ -135,108 +204,121 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
 </head>
 <body>
 
-  <!-- 1. The Header -->
   <header class="site-header">
     <a href="#" class="brand-title">All Things German Shepherd</a>
     <nav aria-label="Main Navigation">
       <ul class="nav-links">
         <li><a href="#About">About</a></li>
-        <li><a href="#Types of GSDs">Different Types of German Shepherds</a></li>
-        <li><a href="#Videos">Videos about German Shepherds</a></li>
-        <li><a href="#Articles">Articles about German Shepherds</a></li>
-        <li><a href="#Contact">Contact</a></li>
+        <li><a href="#Types-of-GSDs">Different Types</a></li>
+        <li><a href="#Videos">Videos</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
-</style>
 
-<body>
-
- <header class="hero-overlay">
-  <video 
-    class="hero-video" 
-    src="dog_park_video.mp4" 
-    autoplay 
-    muted 
-    loop 
-    playsinline>
-  </video>
-  <div class="hero-overlay-shade"></div>
-  <div class="hero-content">
-    <h1>All Things German Shepherd</h1>
-    <p>Your comprehensive resource for breed standards, care guides, and training.</p>
-    <a href="#Types-of-GSDs" class="cta-btn">Explore Breeds</a>
-  </div>
-</header>
+  <header class="hero-overlay">
+    <video 
+      class="hero-video" 
+      src="dog_park_video.mp4" 
+      autoplay 
+      muted 
+      loop 
+      playsinline>
+    </video>
+    <div class="hero-overlay-shade"></div>
+    <div class="hero-content">
+      <h1>All Things German Shepherd</h1>
+      <p>Your comprehensive resource for breed standards, care guides, and training.</p>
+      <a href="#Types-of-GSDs" class="cta-btn">Explore Breeds</a>
+    </div>
+  </header>
   
-<main>
-  <section id="About"> 
-  <h1 style="text-align: center;">All things German Shepherd</h1>
-<h3><p>Hello! This website is for German Shepherd lovers, to provide a one stop shop for things German Shepherds.</p></h3>
-<h3><p>From beginners to experienced German Shepherd owners, this webiste is desgined to resource all information</p></h3>
-  </section>
+  <main>
+    <section id="About"> 
+      <h2 style="text-align: center;">Welcome to All Things German Shepherd</h2>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto 1rem auto;">
+        Hello! This website is for German Shepherd lovers, providing a one-stop resource for all things German Shepherd.
+      </p>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+        From beginners to experienced owners, this site is designed to connect you with essential care guides, working traits, and breed history.
+      </p>
+    </section>
 
-  <section id="Types of GSDs">
-  <h2><b>Different Types of German Shepherds</b></h2>
-  <div class="carousel-container">
-  <div class="carousel-track">
-    <div class="slide active">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/German-shepherd-4040871920.jpg/1280px-German-shepherd-4040871920.jpg" alt="Saddle black-and-tan coat">
-      <div class="caption">Saddle black-and-tan coat</div>
-    </div>
-    <div class="slide">
-      <!-- Fixed alt attribute here -->
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LaikaRosenhof.jpg" alt="Black mask and sable">
-      <div class="caption">Black mask and sable</div>
-    </div>
-    <div class="slide">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Black-german-shepherd.jpg" alt="Solid Black">
-      <div class="caption">Solid Black</div>
-    </div>
-    <div class="slide">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Military_Working_Dog_-_American_Air_Day_2012_%287831960226%29.2.jpg/960px-Military_Working_Dog_-_American_Air_Day_2012_%287831960226%29.2.jpg" alt="Bi-Color">
-      <div class="caption">Bi-Color</div>
-    </div>
-    <div class="slide">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Long_haired_German_Sheppard.jpg/960px-Long_haired_German_Sheppard.jpg" alt="Long-haired black-and-tan">
-      <div class="caption">Long Haired Black and Tan</div>
-    </div>
-  </div>
+    <section id="Types-of-GSDs">
+      <h2 style="text-align: center;">Different Types of German Shepherds</h2>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <div class="slide active">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/German-shepherd-4040871920.jpg/1280px-German-shepherd-4040871920.jpg" alt="Saddle black-and-tan coat">
+            <div class="caption">Saddle black-and-tan coat</div>
+          </div>
+          <div class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LaikaRosenhof.jpg" alt="Black mask and sable">
+            <div class="caption">Black mask and sable</div>
+          </div>
+          <div class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Black-german-shepherd.jpg" alt="Solid Black">
+            <div class="caption">Solid Black</div>
+          </div>
+          <div class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Military_Working_Dog_-_American_Air_Day_2012_%287831960226%29.2.jpg/960px-Military_Working_Dog_-_American_Air_Day_2012_%287831960226%29.2.jpg" alt="Bi-Color">
+            <div class="caption">Bi-Color</div>
+          </div>
+          <div class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Long_haired_German_Sheppard.jpg/960px-Long_haired_German_Sheppard.jpg" alt="Long-haired black-and-tan">
+            <div class="caption">Long Haired Black and Tan</div>
+          </div>
+        </div>
 
-  <button class="nav-btn prev" aria-label="Previous Slide">&#10094;</button>
-  <button class="nav-btn next" aria-label="Next Slide">&#10095;</button>
+        <button class="nav-btn prev" aria-label="Previous Slide">&#10094;</button>
+        <button class="nav-btn next" aria-label="Next Slide">&#10095;</button>
 
-  <!-- Added dots 3 and 4 to match all 5 slides -->
-  <div class="carousel-indicators">
-    <span class="dot active" data-index="0"></span>
-    <span class="dot" data-index="1"></span>
-    <span class="dot" data-index="2"></span>
-    <span class="dot" data-index="3"></span>
-    <span class="dot" data-index="4"></span>
-  </div>
-</div>
+        <div class="carousel-indicators">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+          <span class="dot" data-index="3"></span>
+          <span class="dot" data-index="4"></span>
+        </div>
+      </div>
+    </section>
 
     <section id="Videos">
-<h2><b></b><class="text-center"><b>Videos about German Shepherds</b></h2>
-  </section>
-
-<div class="video-container">
-  <div class="video-wrapper">
-    <iframe
-      src="https://www.youtube.com/embed/5Or4gRVQ304" 
-      title="Pros and Cons of Owning a German Shepherd" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-      allowfullscreen>
-      </iframe>
-  </div>
-</div>
+      <h2 style="text-align: center;">Videos about German Shepherds</h2>
+      <div class="video-container">
+        <div class="video-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/5Or4gRVQ304" 
+            title="Pros and Cons of Owning a German Shepherd" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
 
     <section id="articles">
-<h2><b>Articles about German Shepherds</b></h2>
+      <h2 style="text-align: center;">Articles about German Shepherds</h2>
+      <p style="text-align: center;">
+        <a href="https://www.akc.org/expert-advice/health/tips-for-grooming-german-shepherd/" target="_blank" rel="noopener noreferrer">Tips for Grooming a German Shepherd (AKC)</a>
+      </p>
+    </section>
 
-<a href= "https://www.akc.org/expert-advice/health/tips-for-grooming-german-shepherd/">Tips for Grooming a German Shepherd</a>
+    <section id="contact">
+      <h2 style="text-align: center;">Contact Me</h2>
+      <p style="text-align: center;">Feel free to reach out:</p>
+      <p style="text-align: center;">
+        <strong>Email:</strong> <a href="mailto:miguelpa@ttu.edu">miguelpa@ttu.edu</a>
+      </p>
+    </section>
+  </main>
 
-  <!-- Paste JavaScript right here, just before </body> -->
+  <footer>
+    <p>&copy; 2026 Miguel Padilla and Texas Tech University for a school project. All rights reserved.</p>
+    <p><a href="#">Back to top &uarr;</a></p>
+  </footer>  
+
   <script>
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
@@ -266,8 +348,10 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
       showSlide(currentIndex - 1);
     }
 
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn && prevBtn) {
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', prevSlide);
+    }
 
     dots.forEach(dot => {
       dot.addEventListener('click', (e) => {
@@ -283,25 +367,11 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
       clearInterval(autoplayTimer);
     }
 
-    container.addEventListener('mouseenter', stopAutoplay);
-    container.addEventListener('mouseleave', startAutoplay);
-
-    startAutoplay();
+    if (container) {
+      container.addEventListener('mouseenter', stopAutoplay);
+      container.addEventListener('mouseleave', startAutoplay);
+      startAutoplay();
+    }
   </script>
-
-      <section id="contact">
-      <h2>Contact Me</h2>
-      <p>Feel free to reach out:</p>
-      <ul>
-        <li><strong>Email:</strong> <a href="mailto:miguelpattu.edu">miguelpa@ttu.edu</a></li>
-      </ul>
-    </section>
-  </main>
-
-    <footer>
-    <p>&copy; 2026 Miguel Padilla and Texas Tech University for a school project. All rights reserved.</p>
-    <p><a href="#">Back to top &uarr;</a></p>
-  </footer>  
-
 </body>
 </html>
