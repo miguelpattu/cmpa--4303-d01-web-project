@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>German Shepherd Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>German Shepherd History & Health</title>
   <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
+    /* =========================================
+       GLOBAL RESET & BASE STYLES
+       ========================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -16,10 +23,19 @@
       font-family: "Verdana", sans-serif;
       line-height: 1.6;
       color: #333;
+      overflow-x: hidden;
+      background-color: #ffffff;
+    }
+
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
 
     h1, h2, h3, h4, h5, h6 {
       font-family: "Segoe UI", sans-serif;
+      color: #111827;
     }
 
     /* =========================================
@@ -31,37 +47,50 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.25rem 2.5rem;
+      padding: 1rem 1.5rem;
       background-color: #ffffff;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       z-index: 1000;
     }
 
     .brand-title {
-      font-size: 1.75rem;
+      font-size: 1.35rem;
       font-weight: 800;
       color: #ffa700;
       text-decoration: none;
+      white-space: nowrap;
     }
 
     .brand-title:hover {
       color: #2563eb;
     }
 
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.75rem;
+      cursor: pointer;
+      color: #4b5563;
+      padding: 0.25rem 0.5rem;
+      line-height: 1;
+    }
+
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 1.75rem;
+      gap: 1rem;
       margin: 0;
       padding: 0;
+      align-items: center;
     }
 
     .nav-links a {
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: #4b5563;
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem 0.65rem;
       border-radius: 6px;
       transition: all 0.2s ease;
     }
@@ -77,13 +106,13 @@
     .hero-overlay {
       position: relative;
       width: 100%;
-      height: 70vh;
-      min-height: 480px;
+      min-height: 50vh;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      padding: 3rem 1.25rem;
     }
 
     .hero-video {
@@ -102,7 +131,7 @@
     .hero-overlay-shade {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.5); /* Darkens video for text readability */
+      background: rgba(0, 0, 0, 0.55);
       z-index: 2;
     }
 
@@ -111,20 +140,20 @@
       z-index: 3;
       color: #ffffff;
       max-width: 750px;
-      padding: 0 1.5rem;
+      padding: 0 1rem;
     }
 
     .hero-content h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
       font-weight: 800;
       margin: 0 0 0.75rem 0;
       color: #ffffff;
     }
 
     .hero-content p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      margin: 0 0 1.75rem 0;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      line-height: 1.5;
+      margin: 0 0 1.5rem 0;
       color: #f3f4f6;
     }
 
@@ -132,8 +161,8 @@
       display: inline-block;
       background-color: #ffa700;
       color: #1f2937;
-      padding: 0.85rem 2rem;
-      font-size: 1.05rem;
+      padding: 0.75rem 1.75rem;
+      font-size: 1rem;
       font-weight: 700;
       text-decoration: none;
       border-radius: 8px;
@@ -148,48 +177,72 @@
     }
 
     /* =========================================
-       3. SECTIONS & GENERAL STYLING
+       3. MAIN ARTICLE CONTAINER & TIMELINE LIST
        ========================================= */
-    section {
-      padding: 3.5rem 2.5rem;
-      scroll-margin-top: 80px;
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
     }
 
-    #About { background-color: #f9fafb; }
-    #Types-of-GSDs { background-color: #ffffff; }
-    #Videos { background-color: #f9fafb; }
-    #articles { background-color: #ffffff; }
-    #contact { background-color: #f9fafb; }
-
-    .video-container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 0 15px;
+    main h1 {
+      font-size: clamp(1.75rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
     }
 
-    .video-wrapper {
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      border-radius: 8px;
-      overflow: hidden;
-      background: #000;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    main h2 {
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #1f2937;
     }
 
-    .video-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
+    .demo-lead {
+      font-size: 1.05rem;
+      color: #4b5563;
+      margin-bottom: 2rem;
+      border-left: 4px solid #ffa700;
+      padding-left: 1rem;
     }
 
+    .history-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .history-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.7;
+    }
+
+    .history-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #ffa700;
+      font-size: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .history-list strong {
+      color: #111827;
+    }
+
+    /* =========================================
+       4. FOOTER
+       ========================================= */
     footer {
       background-color: #ffa700;
       color: #1f2937;
       text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.95rem;
+      padding: 2rem 1.25rem;
+      font-size: 0.9rem;
       font-weight: 500;
+      margin-top: 3rem;
     }
 
     footer a {
@@ -200,31 +253,65 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* =========================================
+       5. RESPONSIVE BREAKPOINT (MOBILE/TABLET)
+       ========================================= */
+    @media (max-width: 850px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        gap: 0.5rem;
+        align-items: flex-start;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        padding: 0.75rem 0.5rem;
+        display: block;
+      }
+
+      main {
+        padding: 2rem 1rem;
+      }
+    }
   </style>
 </head>
 <body>
-  
-  <header class="site-header">
-    <nav>
-      <a href="index.html">Back to Home</a> | 
-     </nav> 
 
+  <!-- Clean, Single Navigation Header -->
   <header class="site-header">
-    <a href="#" class="brand-title">All Things German Shepherd</a>
+    <a href="index.html" class="brand-title">All Things GSD</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
     <nav aria-label="Main Navigation">
-      <ul class="nav-links">
-        <li><a href="#About">About</a></li>
-       <li><a href="history.html">GSD History</a><li>
-        <li><a href="#Types-of-GSDs">Different Types</a></li>
-        <li><a href="#Videos">Videos</a></li>
-        <li><a href="#articles">Articles</a></li>
-          <li><a href="Health_Tips.html">GSD Health Tips</a><li>
-        <li><a href="#contact">Contact</a></li>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="history.html">GSD History</a></li>
+        <li><a href="index.html#Types-of-GSDs">Different Types</a></li>
+        <li><a href="Health_Tips.html">GSD Health Tips</a></li>
+        <li><a href="index.html#Videos">Videos</a></li>
+        <li><a href="index.html#articles">Articles</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
-  
 
+  <!-- Hero Video Section -->
   <header class="hero-overlay">
     <video 
       class="hero-video" 
@@ -238,32 +325,49 @@
     <div class="hero-content">
       <h1>All Things German Shepherd</h1>
       <p>Your comprehensive resource for breed standards, care guides, and training.</p>
-      <a href="#Types-of-GSDs" class="cta-btn">Explore Breeds</a>
+      <a href="index.html#Types-of-GSDs" class="cta-btn">Explore Breeds</a>
     </div>
   </header>
-   
+    
+  <!-- Main Content Area -->
   <main>
-       <h1>GSD (German Shepherds) Health Tips</h1>
-    <p>"Demo for project, this is brief history of GSD. </p>
+    <h1>GSD (German Shepherds) Health Tips</h1>
+    <p class="demo-lead">Demo for project: this is a brief history of GSD.</p>
 
-    <h2> history of the German Shepherd dog breed, broken down chronologica</h2>
-    <ul>
-      <li>1899 Foundation: Captain Max von Stephanitz discovered a wolf-like herding dog named Hektor Linkrshein at a dog show in Germany. He purchased the dog, renamed him Horand von Grafrath, and declared him the very first registered German Shepherd Dog (Deutscher Schäferhund).</li>
-      <li>Breeding Philosophy: Von Stephanitz founded the Verein für Deutsche Schäferhunde (Society for German Shepherd Dogs). He focused strictly on utility, intelligence, and working ability rather than appearance.</li>
-      <li>Shift to Service: As industrialization reduced the need for herding dogs, von Stephanitz successfully repurposed the breed for police and military work due to their keen sense of smell, intelligence, and obedience.</li>
-      <li>World War I: The breed served extensively as messengers, rescue dogs, and guards. Allied soldiers were deeply impressed by their capabilities, which sparked international interest.</li>
-      <li>Name Changes: Due to anti-German sentiment during WWI, the breed was renamed the Alsatian Wolf Dog in the UK (later shortened to Alsatian) and the Shepherd Dog in the US. The original name was eventually restored decades later.</li>
-      <li>Hollywood Fame: In the 1920s, German Shepherds became global icons thanks to movie stars like Strongheart and Rin Tin Tin, which dramatically increased the breed's popularity as family pets.</li>
-      <li>World War II and Beyond: They were used by both sides during WWII for scouting, mine detection, and guard duties. Post-war, they became the premier choice for guide dogs for the blind, search and rescue (SAR) teams, and narcotics detection.</li>
-      <li>Modern Evolution: Over the decades, the breed split into distinct lines, notably the American show lines (known for a sloped back) and the European working lines (retaining the flatter back and high drive of the original herding dogs).</li>
+    <h2>History of the German Shepherd dog breed, broken down chronologically:</h2>
+    <ul class="history-list">
+      <li><strong>1899 Foundation:</strong> Captain Max von Stephanitz discovered a wolf-like herding dog named Hektor Linkrshein at a dog show in Germany. He purchased the dog, renamed him Horand von Grafrath, and declared him the very first registered German Shepherd Dog (Deutscher Schäferhund).</li>
+      <li><strong>Breeding Philosophy:</strong> Von Stephanitz founded the Verein für Deutsche Schäferhunde (Society for German Shepherd Dogs). He focused strictly on utility, intelligence, and working ability rather than appearance.</li>
+      <li><strong>Shift to Service:</strong> As industrialization reduced the need for herding dogs, von Stephanitz successfully repurposed the breed for police and military work due to their keen sense of smell, intelligence, and obedience.</li>
+      <li><strong>World War I:</strong> The breed served extensively as messengers, rescue dogs, and guards. Allied soldiers were deeply impressed by their capabilities, which sparked international interest.</li>
+      <li><strong>Name Changes:</strong> Due to anti-German sentiment during WWI, the breed was renamed the Alsatian Wolf Dog in the UK (later shortened to Alsatian) and the Shepherd Dog in the US. The original name was eventually restored decades later.</li>
+      <li><strong>Hollywood Fame:</strong> In the 1920s, German Shepherds became global icons thanks to movie stars like Strongheart and Rin Tin Tin, which dramatically increased the breed's popularity as family pets.</li>
+      <li><strong>World War II and Beyond:</strong> They were used by both sides during WWII for scouting, mine detection, and guard duties. Post-war, they became the premier choice for guide dogs for the blind, search and rescue (SAR) teams, and narcotics detection.</li>
+      <li><strong>Modern Evolution:</strong> Over the decades, the breed split into distinct lines, notably the American show lines (known for a sloped back) and the European working lines (retaining the flatter back and high drive of the original herding dogs).</li>
     </ul>
-
-   
   </main>
 
   <footer>
     <p>&copy; 2026 Miguel Padilla and Texas Tech University for school project. All rights reserved.</p>
     <p><a href="#">Back to top &uarr;</a></p>
   </footer>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+
+      // Close the menu automatically when any navigation link is clicked
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
