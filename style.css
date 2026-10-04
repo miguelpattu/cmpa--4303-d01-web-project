@@ -208,3 +208,20 @@ a:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   border: 1px solid #e2e8f0;
 }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents awkward horizontal scroll bars */
+}
+
+/* Ensure images and videos never overflow their containers */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
