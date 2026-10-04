@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>German Shepherd Website</title>
   <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
+    /* =========================================
+       GLOBAL RESET & BASE STYLES
+       ========================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -16,6 +23,13 @@
       font-family: "Verdana", sans-serif;
       line-height: 1.6;
       color: #333;
+      overflow-x: hidden;
+    }
+
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -31,14 +45,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.25rem 2.5rem;
+      padding: 1rem 1.5rem;
       background-color: #ffffff;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       z-index: 1000;
     }
 
     .brand-title {
-      font-size: 1.75rem;
+      font-size: 1.35rem;
       font-weight: 800;
       color: #ffa700;
       text-decoration: none;
@@ -48,20 +62,31 @@
       color: #2563eb;
     }
 
+    /* Mobile Menu Toggle Button */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.75rem;
+      cursor: pointer;
+      color: #4b5563;
+      padding: 0.25rem 0.5rem;
+    }
+
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 1.75rem;
+      gap: 1.25rem;
       margin: 0;
       padding: 0;
     }
 
     .nav-links a {
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: #4b5563;
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem 0.65rem;
       border-radius: 6px;
       transition: all 0.2s ease;
     }
@@ -77,13 +102,13 @@
     .hero-overlay {
       position: relative;
       width: 100%;
-      height: 70vh;
-      min-height: 480px;
+      min-height: 60vh;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      padding: 3rem 1rem;
     }
 
     .hero-video {
@@ -102,7 +127,7 @@
     .hero-overlay-shade {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.5); /* Darkens video for text readability */
+      background: rgba(0, 0, 0, 0.55);
       z-index: 2;
     }
 
@@ -111,20 +136,20 @@
       z-index: 3;
       color: #ffffff;
       max-width: 750px;
-      padding: 0 1.5rem;
+      padding: 0 1rem;
     }
 
     .hero-content h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-size: clamp(1.8rem, 6vw, 3.2rem);
       font-weight: 800;
       margin: 0 0 0.75rem 0;
       color: #ffffff;
     }
 
     .hero-content p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      margin: 0 0 1.75rem 0;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      line-height: 1.5;
+      margin: 0 0 1.5rem 0;
       color: #f3f4f6;
     }
 
@@ -132,8 +157,8 @@
       display: inline-block;
       background-color: #ffa700;
       color: #1f2937;
-      padding: 0.85rem 2rem;
-      font-size: 1.05rem;
+      padding: 0.75rem 1.75rem;
+      font-size: 1rem;
       font-weight: 700;
       text-decoration: none;
       border-radius: 8px;
@@ -151,8 +176,8 @@
        3. SECTIONS & GENERAL STYLING
        ========================================= */
     section {
-      padding: 3.5rem 2.5rem;
-      scroll-margin-top: 80px;
+      padding: 3rem 1.25rem;
+      scroll-margin-top: 70px;
     }
 
     #About { background-color: #f9fafb; }
@@ -161,10 +186,112 @@
     #articles { background-color: #ffffff; }
     #contact { background-color: #f9fafb; }
 
+    /* =========================================
+       4. CAROUSEL STYLES
+       ========================================= */
+    .carousel-container {
+      position: relative;
+      max-width: 720px;
+      margin: 2rem auto 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      background: #111;
+    }
+
+    .carousel-track {
+      position: relative;
+      width: 100%;
+      height: 380px;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: #fff;
+      padding: 1.5rem 1rem 0.85rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      transition: background 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .nav-btn.prev { left: 10px; }
+    .nav-btn.next { right: 10px; }
+
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 0.75rem 0;
+      background: #1f2937;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #9ca3af;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .dot.active {
+      background: #ffa700;
+      transform: scale(1.2);
+    }
+
+    /* =========================================
+       5. VIDEO CONTAINER
+       ========================================= */
     .video-container {
       max-width: 800px;
-      margin: 20px auto;
-      padding: 0 15px;
+      margin: 1.5rem auto 0 auto;
+      padding: 0;
     }
 
     .video-wrapper {
@@ -183,12 +310,15 @@
       display: block;
     }
 
+    /* =========================================
+       6. FOOTER
+       ========================================= */
     footer {
       background-color: #ffa700;
       color: #1f2937;
       text-align: center;
       padding: 2rem 1rem;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
     }
 
@@ -200,19 +330,60 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* =========================================
+       7. MOBILE RESPONSIVE MEDIA QUERIES
+       ========================================= */
+    @media (max-width: 850px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        gap: 0.5rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 0.65rem 0.75rem;
+        display: block;
+      }
+
+      .carousel-track {
+        height: 260px;
+      }
+
+      .nav-btn {
+        width: 36px;
+        height: 36px;
+      }
+    }
   </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
+  <!-- Site Navigation -->
   <header class="site-header">
-    <a href="#" class="brand-title">All Things German Shepherd</a>
+    <a href="#" class="brand-title">All Things GSD</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
     <nav aria-label="Main Navigation">
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#About">About</a></li>
         <li><a href="history.html">GSD History</a></li>
         <li><a href="#Types-of-GSDs">Different Types</a></li>
-        <li><a href="Health_Tips.html">GSD Health Tips</a><li>
+        <li><a href="Health_Tips.html">GSD Health Tips</a></li>
         <li><a href="#Videos">Videos</a></li>
         <li><a href="#articles">Articles</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -220,6 +391,7 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <header class="hero-overlay">
     <video 
       class="hero-video" 
@@ -323,6 +495,24 @@
   </footer>  
 
   <script>
+    /* Mobile Menu Toggle */
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+
+      // Auto-close menu when a link is clicked
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+        });
+      });
+    }
+
+    /* Carousel Logic */
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     const prevBtn = document.querySelector('.prev');
