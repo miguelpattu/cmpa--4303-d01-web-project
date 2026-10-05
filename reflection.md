@@ -16,6 +16,6 @@ If I could change my approach, I would have mapped out the website better before
 
 ## *What you learned*
 
-What I learned about myself building this website over the semester was overcoming the fear of the unknown, learning how to be creative and building something from scratch. I was unaware how flexible and versatile html codes are, there are seemingly endless commands to make a website function and give it uniqueness to any other website. I was intimidated by some of the tools at the beginning but I was used them more, I got quite comfortable and html code pretty began to look like a normal language. I understood what the html tags meant without having to look them up on cheat sheet every time. 
+What I learned about myself building this website over the semester was overcoming the fear of the unknown, learning how to be creative and building something from scratch. I was unaware how flexible and versatile html codes are, there are seemingly endless commands to make a website function and give it uniqueness to any other website. I was intimidated by some of the tools at the beginning but I was used them more, I got quite comfortable and html code pretty began to look like a normal language. I understood what the html tags meant without having to look them up on cheat sheet every time. One cool thing I learned was how to make the website fit properly on mobile devices. 
 
 
